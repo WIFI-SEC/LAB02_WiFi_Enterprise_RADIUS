@@ -1,9 +1,9 @@
 # Clase Práctica: WiFi Empresarial con RADIUS y Certificados
 ## Configuración, Captura y Análisis en una Sesión
 
-**Duración**: 3-4 horas
 **Nivel**: Intermedio en seguridad informática
-**Modalidad**: Práctica con demostración
+**Modalidad**: Práctica con demostración y análisis en vivo
+**Enfoque**: Comprensión profunda del protocolo 802.1X mediante observación directa
 
 ---
 
@@ -23,7 +23,9 @@ Al finalizar, los alumnos comprenderán:
 
 ## Agenda de la Clase
 
-### BLOQUE 1: Introducción Teórica (30 min)
+### BLOQUE 1: Introducción Teórica
+
+**Objetivo**: Establecer fundamentos conceptuales antes de la práctica
 
 #### 1.1 Contexto: ¿Por qué WiFi Enterprise?
 
@@ -94,11 +96,15 @@ Cada uno confía en la CA raíz
 
 ---
 
-### BLOQUE 2: Demostración Pre-configurada (45 min)
+### BLOQUE 2: Demostración Pre-configurada
 
-**IMPORTANTE**: Para optimizar el tiempo, mostrar un ambiente **YA CONFIGURADO**.
+**Objetivo**: Mostrar un ambiente completamente funcional y comprender cada componente
 
-#### 2.1 Tour del Laboratorio (10 min)
+**IMPORTANTE**: Usar un ambiente **YA CONFIGURADO** para enfocar en comprensión, no en instalación.
+
+#### 2.1 Tour del Laboratorio
+
+**Objetivo**: Identificar y comprender cada componente del sistema 
 
 **Mostrar componentes:**
 
@@ -133,7 +139,7 @@ openssl x509 -in server/certs/server.pem -noout -subject -issuer -dates
 openssl x509 -in clients/certs/alumno1.pem -noout -subject -dates
 ```
 
-#### 2.2 Configuración del Access Point (5 min)
+#### 2.2 Configuración del Access Point 
 
 **Mostrar configuración en el AP** (usar interfaz web):
 
@@ -149,7 +155,7 @@ RADIUS Server:
 VLAN: Dinámica (asignada por RADIUS)
 ```
 
-#### 2.3 Conectar un Cliente (10 min)
+#### 2.3 Conectar un Cliente 
 
 **Demostración en vivo - Windows:**
 
@@ -178,7 +184,7 @@ ping 8.8.8.8
 # Debe funcionar
 ```
 
-#### 2.4 Ver el Proceso en RADIUS (20 min)
+#### 2.4 Ver el Proceso en RADIUS 
 
 **Modo DEBUG - CLAVE PARA ENTENDER**
 
@@ -245,9 +251,9 @@ sudo freeradius -X
 
 ---
 
-### BLOQUE 3: Captura y Análisis con Wireshark (60 min) ⭐ **SECCIÓN CRÍTICA**
+### BLOQUE 3: Captura y Análisis con Wireshark  ⭐ **SECCIÓN CRÍTICA**
 
-#### 3.1 Preparar Captura (10 min)
+#### 3.1 Preparar Captura 
 
 **En el servidor RADIUS:**
 
@@ -275,7 +281,7 @@ sudo airodump-ng wlan0mon -c 6 --bssid [MAC_AP] -w /tmp/eapol
 5. Detener ambas capturas (Ctrl+C)
 ```
 
-#### 3.3 Análisis en Wireshark (50 min)
+#### 3.3 Análisis en Wireshark 
 
 **Abrir ambas capturas en Wireshark**
 
@@ -459,9 +465,9 @@ Frame: Data
 
 ---
 
-### BLOQUE 4: Configuración Empresarial (30 min)
+### BLOQUE 4: Configuración Empresarial 
 
-#### 4.1 VLANs Dinámicas (10 min)
+#### 4.1 VLANs Dinámicas 
 
 **Mostrar configuración de usuarios con VLANs diferentes:**
 
@@ -506,7 +512,7 @@ Access Point
 - Conectar con "alumno1" → IP 192.168.10.x
 - Desconectar y conectar con "director" → IP 192.168.20.x
 
-#### 4.2 Seguridad Adicional (10 min)
+#### 4.2 Seguridad Adicional 
 
 **Protected Management Frames (PMF / 802.11w)**
 
@@ -535,7 +541,7 @@ Configuración en AP:
 # Con PMF habilitado → ataque no funciona
 ```
 
-#### 4.3 Troubleshooting Común (10 min)
+#### 4.3 Troubleshooting Común 
 
 **Problema 1: "No se puede conectar"**
 
@@ -579,7 +585,7 @@ openssl x509 -in cert.pem -noout -text
 
 ---
 
-### BLOQUE 5: Cierre y Mejores Prácticas (15 min)
+### BLOQUE 5: Cierre y Mejores Prácticas 
 
 #### 5.1 Resumen de Conceptos Clave
 
