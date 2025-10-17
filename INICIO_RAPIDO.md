@@ -9,8 +9,13 @@ cd TP_WiFi_Enterprise_RADIUS/scripts
 sudo ./install-linux.sh
 ```
 
-⏱️ **Tiempo:** 15-20 minutos
-✅ **Resultado:** FreeRADIUS funcionando + Certificados + 4 usuarios
+✅ **Resultado:** FreeRADIUS funcionando + Certificados + 4 usuarios + VLANs configuradas
+
+**Proceso automatizado:**
+- Instalación de dependencias (FreeRADIUS, OpenSSL, Wireshark)
+- Generación de infraestructura PKI completa
+- Configuración de 5 usuarios con atributos RADIUS
+- Testing y verificación automática
 
 ---
 
@@ -21,10 +26,15 @@ cd TP_WiFi_Enterprise_RADIUS/scripts
 ./install-macos.sh
 ```
 
-⏱️ **Tiempo:** 45-60 minutos (incluye descarga de ISO)
-✅ **Resultado:** VM Ubuntu + FreeRADIUS + Wireshark
+✅ **Resultado:** VM Ubuntu + FreeRADIUS + Wireshark + Herramientas cliente
 
-**Nota:** Requiere interacción para crear VM en UTM
+**Proceso automatizado:**
+- Descarga de ISO de Ubuntu Server ARM64
+- Configuración de VM en UTM con recursos apropiados
+- Instalación y configuración completa de FreeRADIUS
+- Configuración de networking entre host y VM
+
+**Nota:** Requiere interacción manual para crear VM en UTM (proceso guiado por el script)
 
 ---
 
@@ -37,8 +47,15 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 .\install-windows.ps1
 ```
 
-⏱️ **Tiempo:** 30-40 minutos (puede requerir reinicio)
-✅ **Resultado:** WSL2 + Ubuntu + FreeRADIUS
+✅ **Resultado:** WSL2 + Ubuntu + FreeRADIUS + Wireshark
+
+**Proceso automatizado:**
+- Habilitación de WSL2 si no está instalado
+- Instalación de Ubuntu 22.04 en WSL
+- Configuración completa de FreeRADIUS
+- Instalación de Wireshark en Windows host
+
+**Nota:** Puede requerir reinicio de Windows si WSL2 no estaba habilitado previamente
 
 ---
 
@@ -101,13 +118,13 @@ Verás los logs detallados de la autenticación en tiempo real.
 
 ## Usuarios Pre-configurados
 
-| Usuario | Password | VLAN | Descripción |
-|---------|----------|------|-------------|
-| testuser | testpass | - | Usuario de prueba básico |
-| alumno1 | password1 | 10 | Empleado regular |
-| alumno2 | password2 | 10 | Empleado regular |
-| director | password3 | 20 | Gerencia (mayor acceso) |
-| invitado | guest123 | 30 | Invitado (1 hora timeout) |
+| Usuario | Password | VLAN | Descripción | Atributos RADIUS |
+|---------|----------|------|-------------|------------------|
+| testuser | testpass | - | Usuario de prueba básico | Sin VLANs |
+| alumno1 | password1 | 10 | Empleado regular | Tunnel-Type=VLAN, Tunnel-Private-Group-Id=10 |
+| alumno2 | password2 | 10 | Empleado regular | Tunnel-Type=VLAN, Tunnel-Private-Group-Id=10 |
+| director | password3 | 20 | Gerencia (mayor acceso) | Tunnel-Type=VLAN, Tunnel-Private-Group-Id=20, Session-Timeout extendido |
+| invitado | guest123 | 30 | Invitado (acceso limitado) | Tunnel-Type=VLAN, Tunnel-Private-Group-Id=30, Session-Timeout restringido |
 
 ---
 
@@ -280,13 +297,13 @@ freeradius -X
 
 ## Material del Curso
 
-| Archivo | Contenido | Duración |
-|---------|-----------|----------|
-| `00_Introduccion_Teorica.md` | Fundamentos 802.1X, RADIUS, EAP | 1-2h lectura |
-| `GUIA_CLASE_UNICA.md` | Clase práctica de 3-4 horas | 3-4h |
-| `LABORATORIO_MACBOOK_M4.md` | Setup en Apple Silicon | Referencia |
-| `05_Captura_Analisis_Wireshark.md` | Análisis profundo de paquetes | 3-4h práctica |
-| `scripts/README.md` | Guía de scripts de instalación | Referencia |
+| Archivo | Contenido | Tipo |
+|---------|-----------|------|
+| `00_Introduccion_Teorica.md` | Fundamentos 802.1X, RADIUS, EAP | Teoría |
+| `GUIA_CLASE_UNICA.md` | Clase práctica completa | Práctica guiada |
+| `LABORATORIO_MACBOOK_M4.md` | Setup en Apple Silicon | Referencia técnica |
+| `05_Captura_Analisis_Wireshark.md` | Análisis profundo de paquetes | Práctica avanzada |
+| `scripts/README.md` | Guía de scripts de instalación | Referencia técnica |
 
 ---
 
