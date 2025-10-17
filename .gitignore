@@ -1,0 +1,57 @@
+# Archivos del sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backups
+*.backup
+*.bak
+*~
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Certificados y claves privadas (SENSIBLE - no subir)
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+
+# Configuraciones locales con secretos
+*secret*
+*password*
+
+# Directorios de IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Entornos virtuales
+venv/
+env/
+ENV/
