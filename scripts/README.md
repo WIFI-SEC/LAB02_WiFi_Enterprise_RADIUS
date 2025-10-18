@@ -36,7 +36,7 @@ chmod +x install-linux.sh
 sudo ./install-linux.sh
 ```
 
-**Tiempo estimado:** 15-20 minutos
+**Proceso completamente automatizado**
 
 **Requisitos:**
 - Ubuntu 22.04+ o Debian 11+
@@ -57,12 +57,14 @@ chmod +x install-macos.sh
 ./install-macos.sh
 ```
 
-**Tiempo estimado:** 45-60 minutos
-- Descarga de ISO: ~10 min
-- Instalación de herramientas: ~5 min
-- Creación de VM: ~10 min
-- Instalación de Ubuntu en VM: ~15 min
-- Configuración de RADIUS: ~10 min
+**Proceso completamente automatizado**
+
+Incluye:
+- Descarga automática de ISO de Ubuntu Server ARM64
+- Instalación de herramientas (Homebrew, UTM, Wireshark)
+- Guía interactiva para creación de VM
+- Instalación completa de Ubuntu en VM
+- Configuración automática de FreeRADIUS y PKI
 
 **Requisitos:**
 - macOS 12.0+ (Monterey o superior)
@@ -88,10 +90,13 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 .\install-windows.ps1
 ```
 
-**Tiempo estimado:** 30-40 minutos
-- Instalación de WSL2: ~10 min (+ reinicio)
-- Instalación de Ubuntu: ~5 min
-- Configuración de RADIUS: ~15 min
+**Proceso completamente automatizado**
+
+Incluye:
+- Habilitación de WSL2 si no está instalado (puede requerir reinicio)
+- Instalación de Ubuntu 22.04 en WSL
+- Configuración completa de FreeRADIUS y PKI
+- Instalación de Wireshark en Windows host
 
 **Requisitos:**
 - Windows 10 versión 2004+ o Windows 11
@@ -123,7 +128,7 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 - `alumno1` / `password1` - VLAN 10
 - `alumno2` / `password2` - VLAN 10
 - `director` / `password3` - VLAN 20
-- `invitado` / `guest123` - VLAN 30 (1 hora timeout)
+- `invitado` / `guest123` - VLAN 30 (timeout limitado)
 
 ✅ **Herramientas de Testing**
 - `radtest` - Testing de autenticación
@@ -473,11 +478,11 @@ Para producción, revisar: `06_Mejores_Practicas_Empresariales.md`
 
 ## 📊 Estadísticas de Instalación
 
-| Plataforma | Tiempo | Tamaño Descarga | Espacio Disco |
-|------------|--------|-----------------|---------------|
-| Linux | 15-20 min | ~100 MB | ~500 MB |
-| macOS | 45-60 min | ~1.5 GB | ~5 GB |
-| Windows | 30-40 min | ~300 MB | ~2 GB |
+| Plataforma | Tamaño Descarga | Espacio Disco | Notas |
+|------------|-----------------|---------------|-------|
+| Linux | ~100 MB | ~500 MB | Instalación nativa, más eficiente |
+| macOS | ~1.5 GB | ~5 GB | Incluye ISO de Ubuntu ARM64 |
+| Windows | ~300 MB | ~2 GB | Mediante WSL2 |
 
 ---
 
